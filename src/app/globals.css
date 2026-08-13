@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0c1210;
+  --mist: #e8eee9;
+  --fog: #f4f7f4;
+  --moss: #1f4d3a;
+  --signal: #e85d04;
+  --brass: #b8a078;
+  --stone: #8a918a;
+  --background: var(--fog);
+  --foreground: var(--ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--signal) 35%, white);
+  color: var(--ink);
+}
+
+.metric-grid {
+  background-image: var(--grid-fade, linear-gradient(to right, rgba(12, 18, 16, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(12, 18, 16, 0.05) 1px, transparent 1px));
+  background-size: 48px 48px;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.film-track {
+  scroll-snap-type: x mandatory;
+}
+
+.film-slide {
+  scroll-snap-align: start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
